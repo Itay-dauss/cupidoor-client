@@ -1,0 +1,13 @@
+{
+  "api": {
+    "israelGov": {
+      "baseUrl": "https://data.gov.il/api",
+      "routes": {
+        "search": "/3/action/datastore_search"
+      },
+      "resourcesIds": {
+        "citiesId": "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba"
+      }
+    }
+  }
+}
