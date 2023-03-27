@@ -3,7 +3,7 @@ export const QUESTIONS: string[] = [
     "Do you own any pets?",
     "Do you mind to share apartment?",
     "Do you have stable income?",
-    "Is the relationship between the landlord tenant important to you?",
+    "Is the relationship between landlord and tenant important to you?",
 ]
 
 export const ANSWERS_MAP: Record<string, number>  = {

@@ -3,9 +3,13 @@ import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
-import VideoLabelIcon from '@mui/icons-material/VideoLabel';
+
+import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
+import PetsIcon from '@mui/icons-material/Pets';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+
 import { StepIconProps } from '@mui/material/StepIcon';
 import Box from '@mui/material/Box/Box';
 import Button from '@mui/material/Button/Button';
@@ -14,16 +18,17 @@ import { ColorlibConnector, ColorlibStepIconRoot, QuestionFormSection } from './
 import { useState } from 'react';
 import AnswerForm from './AnswerForm';
 import PriorityForm from './PriorityForm';
+import { getTenantMatches } from '../../utils/api';
 
 function ColorlibStepIcon(props: StepIconProps) {
   const { active, completed, className } = props;
 
   const icons: { [index: string]: React.ReactElement } = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
-    4: <GroupAddIcon />,
-    5: <VideoLabelIcon />,
+    1: <SmokingRoomsIcon />,
+    2: <PetsIcon />,
+    3: <Diversity3Icon />,
+    4: <AttachMoneyIcon />,
+    5: <HandshakeIcon />,
   };
 
   return (
@@ -36,7 +41,7 @@ function ColorlibStepIcon(props: StepIconProps) {
 export default function QuestionsStepper() {
     const [activeStep, setActiveStep] = useState<number>(0);
     const [answers, setAnswers] = useState<number[]>([-1, -1, -1, -1, -1]);
-    const [priorities, setPriorities] = useState<number[]>([0,0,0,0,0]);
+    const [priority, setPriorities] = useState<number[]>([0,0,0,0,0]);
     
     const setAnswer = (index: number, value: number) => {
         const newAnswers = [...answers]; // create a new copy of the array
@@ -45,7 +50,7 @@ export default function QuestionsStepper() {
     }
 
     const setPriority = (index: number, value: number) => {
-        const newPriorities = [...priorities]; // create a new copy of the array
+        const newPriorities = [...priority]; // create a new copy of the array
         newPriorities[index] = value; // update the element at the specified index
         setPriorities(newPriorities); // update the state with the new array
     }
@@ -61,23 +66,39 @@ export default function QuestionsStepper() {
             return (prevActiveStep === 0 ) ? prevActiveStep : prevActiveStep - 1
           });
         };
+
+    const handleSubmit = async () => {
+      console.log({
+        answers,
+        priority
+      });
+
+      const res = await getTenantMatches({
+        answers,
+        priority
+      })
+
+      // TODO: Convert to Apartment type and show the screen.
+      console.log(res);
+    }
   
     const handleReset = () => {
       setActiveStep(0);
     };
   
+    const isLastStep = activeStep === QUESTIONS.length - 1;
   return (
     <Stack sx={{ width: '100%' }} spacing={4}>
-      <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
+      <Stepper sx={{marginTop: "24px"}} alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
         {QUESTIONS.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+            <StepLabel StepIconComponent={ColorlibStepIcon}></StepLabel>
           </Step>
         ))}
       </Stepper>
       <QuestionFormSection>
         <AnswerForm activeStep={activeStep} setAnswer={setAnswer} value={answers[activeStep]}/>
-        <PriorityForm activeStep={activeStep} setAnswer={setPriority} value={priorities[activeStep]}/>
+        <PriorityForm activeStep={activeStep} setAnswer={setPriority} value={priority[activeStep]}/>
       <Box sx={{ mb: 2, display: "flex",
     justifyContent: "center",
     alignItems: "center" }}>
@@ -90,10 +111,10 @@ export default function QuestionsStepper() {
                   </Button>
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={isLastStep ? handleSubmit : handleNext}
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    {'Continue'}
+                    {isLastStep ? 'Find My Home!': "Next"}
                   </Button>
               </Box>
       </QuestionFormSection>

@@ -68,6 +68,7 @@ export default function PriorityForm({activeStep, setAnswer, value} : FormProps)
     justifyContent: "center" }}>
             <Typography sx={{ mr: 2 }}>{"not important"}</Typography>
             <StyledRating
+            size='large'
             name="highlight-selected-only"
             value={selectedPriority}
             onChange={(_event, newValue) => {
