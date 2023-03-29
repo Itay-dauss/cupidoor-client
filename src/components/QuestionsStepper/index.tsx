@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
+
 import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -38,7 +40,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-export default function QuestionsStepper() {
+export default function QuestionsStepper({displayHouses} : {displayHouses : Function}) {
     const [activeStep, setActiveStep] = useState<number>(0);
     const [answers, setAnswers] = useState<number[]>([-1, -1, -1, -1, -1]);
     const [priority, setPriorities] = useState<number[]>([0,0,0,0,0]);
@@ -80,6 +82,7 @@ export default function QuestionsStepper() {
 
       // TODO: Convert to Apartment type and show the screen.
       console.log(res);
+      displayHouses(res);
     }
   
     const handleReset = () => {
@@ -109,13 +112,23 @@ export default function QuestionsStepper() {
                   >
                     Back
                   </Button>
+                  {isLastStep ?                 <Link
+                  className="navbar-link"
+                  to={`houses`}
+                >
                   <Button
                     variant="contained"
-                    onClick={isLastStep ? handleSubmit : handleNext}
+                    onClick={handleSubmit}
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    {isLastStep ? 'Find My Home!': "Next"}
-                  </Button>
+                    {'Find My Home!'}
+                  </Button> </Link> : <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    {"Next"}
+                  </Button> }                  
               </Box>
       </QuestionFormSection>
     </Stack>
