@@ -1,4 +1,5 @@
 export type Apartment = {
+    id: number;
     address: string;
     floor: number;
     match: number;

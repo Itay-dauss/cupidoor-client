@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import QuestionsStepper from "../QuestionsStepper";
 import GenericHousesList from "../GenericHousesList";
 import { useState } from "react";
+import ApartmentDetails from "../ApartmentDetails";
 
 const App = () => {
   const [houses, setHouses] = useState<any[]>([]);
@@ -16,11 +17,9 @@ const App = () => {
       <Routes>
         <Route path={`/`} element={<MainFeed />}></Route>
         <Route path={`/questions`} element={<QuestionsStepper displayHouses={(apartments : any[]) => setHouses(apartments)} />}></Route>
-        <Route path={`/questions/houses`} element={<GenericHousesList apartments={houses}/>}></Route>
+        <Route path={`/home`} element={<GenericHousesList apartments={houses}/>}></Route>
+        <Route path={`/apartment/:id`} element={<ApartmentDetails />}></Route>
       </Routes>
-
-        {/* <MainFeed /> */}
-        {/* <QuestionsStepper /> */}
       </ContentSection>
     </Container>
   );
