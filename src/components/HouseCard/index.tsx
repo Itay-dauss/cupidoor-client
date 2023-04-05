@@ -7,26 +7,20 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { amber } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { DividerLine, UpvotesCount, cardStyles } from "./styles";
+import { DividerLine, cardStyles, AvatarStyles, CardContentStyles, MatchLabelStyles } from "./styles";
 import Button from "@mui/material/Button";
 import Skeleton from "@mui/material/Skeleton";
 import { Apartment } from "../../types/apartment";
+import UserImg from "../../icons/user.jpeg"
 
 const HouseCard = ({ houseData }: { houseData: Apartment }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
-  const [isApiInBookmark, setIsApiInBookmark] = useState(false);
 
   return (
     <Card sx={cardStyles}>
-      <CardHeader
-        sx={{textAlign: "center", fontSize: "18px", color: "forestgreen"}}
-        title={`Matching: ${houseData.match}%`}
-        subheader={""}
-      />
       {isLoading ? (
         <Skeleton
           animation="wave"
@@ -42,14 +36,14 @@ const HouseCard = ({ houseData }: { houseData: Apartment }) => {
           alt="Paella dish"
         />
       )}
+      <Avatar alt="Remy Sharp" src={UserImg} sx={AvatarStyles}/>
+      
       <CardContent
-        sx={{
-          padding: "12px 16px",
-          height: "135px",
-          maxHeight: "150px",
-          overflowY: "auto",
-        }}
+        sx={CardContentStyles}
       >
+        <Typography
+        sx={MatchLabelStyles}
+      >{`${houseData.match}% Match`}</Typography>
         <Typography variant="body2" color="text.secondary">
         <b>Address:</b> {houseData.address}
         </Typography>

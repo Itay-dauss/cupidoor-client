@@ -10,14 +10,6 @@ export const DividerLine = styled.hr`
   border-radius: 15px;
 `;
 
-export const UpvotesCount = styled.span`
-  margin: 0;
-  position: absolute;
-  font-size: 20px;
-  left: 37px;
-  font-weight: bold;
-`;
-
 export const cardStyles = {
   maxWidth: 345,
   width: "16rem",
@@ -31,3 +23,22 @@ export const cardStyles = {
     boxShadow: "rgb(0 0 0 / 60%) 0px 5px 25px",
   },
 };
+
+export const AvatarStyles = {
+  margin: "auto",
+  bottom: "30px",
+  width: "50px",
+  height: "50px",
+  border: "5px solid #fff"
+}
+
+export const CardContentStyles = {
+  maxHeight: "200px",
+  overflowY: "auto",
+  position: "relative",
+  bottom: "32px",
+  margin: "8px 0",
+  padding: "0 16px",
+};
+
+export const MatchLabelStyles = {textAlign: "center", fontSize: "20px", color: "forestgreen", marginBottom: "8px", fontWeight: "bold"}
