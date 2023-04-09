@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Skeleton from "@mui/material/Skeleton";
 import { Apartment } from "../../types/apartment";
 import UserImg from "../../icons/user.jpeg"
+import { Link } from "react-router-dom";
 
 const HouseCard = ({ houseData }: { houseData: Apartment }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -74,12 +75,11 @@ const HouseCard = ({ houseData }: { houseData: Apartment }) => {
         >
           <ThumbUpIcon color="primary" />
         </IconButton>
-        <Button
-          sx={{ color: "#757575" }}
-          onClick={() => {}}
-        >
-          {`${houseData.landlord.firstName} ${houseData.landlord.lastName}`}
-        </Button>
+        <Link to={`/apartment/${houseData.id}`}>
+          <Button sx={{ color: "#757575" }}>
+            More details
+          </Button>
+        </Link>
         <IconButton aria-label="add to favorites" onClick={() => {}}>
           <FavoriteIcon color="error"/>
         </IconButton>
