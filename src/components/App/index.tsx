@@ -6,6 +6,7 @@ import QuestionsStepper from "../QuestionsStepper";
 import GenericHousesList from "../GenericHousesList";
 import { useState } from "react";
 import ApartmentDetails from "../ApartmentDetails";
+import UserRouter from "../UserRouter";
 
 const App = () => {
   const [houses, setHouses] = useState<any[]>([]);
@@ -19,6 +20,7 @@ const App = () => {
         <Route path={`/questions`} element={<QuestionsStepper displayHouses={(apartments : any[]) => setHouses(apartments)} />}></Route>
         <Route path={`/home`} element={<GenericHousesList apartments={houses}/>}></Route>
         <Route path={`/apartment/:id`} element={<ApartmentDetails />}></Route>
+        <Route path={`/user/*`} element={<UserRouter />}></Route>
       </Routes>
       </ContentSection>
     </Container>

@@ -5,14 +5,26 @@ import { User } from "../types/user";
 
 const DESC_MOCK: string = `This apartment is great, has nice view, and tenants \nWe love animals, Sports and having fun on Fridays. \nLooking for someone like me`
 
-const LANDLORD_MOCK: User = {
+export const LANDLORD_MOCK: User = {
     id: 0,
     firstName: "Avi",
     lastName: "Cohen",
-    familiarity: `I am Omer, like pets, and having car parking.
+    familiarity: `I am Avi, like pets, and having car parking.
         Looking for a second tenant to the great
-        current one.`
+        current one.`,
+    isLandlord: true
 }
+
+export const TANENT_MOCK: User = {
+    id: 0,
+    firstName: "Moshe",
+    lastName: "Levi",
+    familiarity: `I am Moshe, like pets, and having car parking.
+        Looking for a second tenant to the great
+        current one.`,
+    isLandlord: false
+}
+
 export const HOUSES: Apartment[] = [
 {id: 1, landlord: LANDLORD_MOCK, description: DESC_MOCK, address: 'Tel Aviv, George Wise 2' , propertyCond: PROPERTY_CONDITIONS.NEW ,entryDate: randomDate(new Date(2012, 0, 1), new Date()), floor: 2, squareMeter: 60, balcony: 1, parkings: 0, match: 95, rooms: 3, paymentsCond: randomPaymentCond()},
 {id: 2, landlord: LANDLORD_MOCK, description: DESC_MOCK, address: 'Jerusalem, Gooday 32' , propertyCond: PROPERTY_CONDITIONS.NEW_FROM_A_CONTRACTOR ,entryDate: randomDate(new Date(2012, 0, 1), new Date()), floor: 5, squareMeter: 60, balcony: 1, parkings: 1, match: 95, rooms: 3, paymentsCond: randomPaymentCond()},
@@ -27,8 +39,16 @@ export const HOUSES: Apartment[] = [
 {id: 11, landlord: LANDLORD_MOCK, description: DESC_MOCK, address: 'Dimona, Lilach 92' , propertyCond: PROPERTY_CONDITIONS.PRESERVED ,entryDate: randomDate(new Date(2012, 0, 1), new Date()), floor: 4, squareMeter: 60, balcony: 1, parkings: 1, match: 95, rooms: 3, paymentsCond: randomPaymentCond()}
 ]
 
+export const USER_INIT: User = {
+    id: 0, 
+    firstName: '', 
+    lastName: '', 
+    familiarity: '', 
+    isLandlord: false
+}
+
 export const HOUSE_INIT: Apartment = {
-    id: 0, landlord: { id: 0, firstName: '', lastName: '', familiarity: ''},
+    id: 0, landlord: USER_INIT,
     description: '', address: '', propertyCond: PROPERTY_CONDITIONS.NEW, entryDate: new Date(),
     floor: 0, squareMeter: 0, balcony: 0, parkings: 0, match: 0, rooms: 0, paymentsCond: {
         rent: 0, 
