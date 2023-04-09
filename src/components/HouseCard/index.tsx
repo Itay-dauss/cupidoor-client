@@ -1,6 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -17,7 +16,6 @@ import UserImg from "../../icons/user.jpeg"
 
 const HouseCard = ({ houseData }: { houseData: Apartment }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
 
   return (
     <Card sx={cardStyles}>
@@ -57,7 +55,7 @@ const HouseCard = ({ houseData }: { houseData: Apartment }) => {
           <b>Parking:</b> {houseData.parkings}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <b>Price:</b> {houseData.price} ₪
+          <b>Price:</b> {houseData.paymentsCond.rent} ₪
         </Typography>
       </CardContent>
       <DividerLine />

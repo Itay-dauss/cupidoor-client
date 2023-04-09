@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Apartment } from "../../types/apartment";
 import { HOUSES, HOUSE_INIT } from "../../utils/mock";
-import { Container, DetailsContainer} from "./styles";
+import DryDetails from "./DryDetails";
+import { Container, DetailsContainer, ElementsLineOne, RentContainer, Image, ImageContainer, DryDetailsContainer } from "./styles";
 
 
 const ApartmentDetails = () => {
@@ -22,15 +23,30 @@ const ApartmentDetails = () => {
             fetchApartmentData(apartmentId).then(apartment => setApartmentInfo(apartment))
         else
             console.log("error")
-    }, [])
+    }, [params.id])
 
-    return (  
+    return ( // TODO: Change last updated mock.
         <Container>
-            <Typography>
+            <Typography variant="h6">
                 Apartment Details
             </Typography>
             <DetailsContainer>
-                
+                <ElementsLineOne>
+                    <ImageContainer>
+                        <Image alt="Paella dish" src="https://www.apartments.com/images/default-source/2019-naa/parkline-apartment-in-miami-fla2dc2731-e6f2-4dca-89c5-38245ccacea1.tmb-featuredim.jpg?sfvrsn=55bc41ed_1" />
+                    </ImageContainer>
+                    <DryDetailsContainer>
+                        <DryDetails {...apartmentInfo}/>
+                    </DryDetailsContainer>
+                    <RentContainer>
+                            <Typography variant="h4">
+                                {`${apartmentInfo.paymentsCond.rent}₪`}
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                {"Last updated: Today"}
+                            </Typography>
+                        </RentContainer>
+                </ElementsLineOne>
             </DetailsContainer>
         </Container>
     );
