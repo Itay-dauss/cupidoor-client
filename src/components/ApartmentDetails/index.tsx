@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Apartment } from "../../types/apartment";
 import { HOUSES, HOUSE_INIT } from "../../utils/mock";
 import DryDetails from "./DryDetails";
-import { Container, ElementsLineOne, RentContainer, Image, ImageContainer, DryDetailsContainer, Frame, ElementsLineTwo, SubFrame, AvatarConatiner, PaymentProperty } from "./styles";
+import { Container, ElementsLineOne, RentContainer, Image, ImageContainer, DryDetailsContainer, Frame, ElementsLineTwo, SubFrame } from "./styles";
 import PaymentCalculator from "./PaymentCalculator";
 import LandlordSection from "./LandlordSection";
 
