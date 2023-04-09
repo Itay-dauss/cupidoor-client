@@ -1,8 +1,10 @@
 import { PaymentsCond } from "./paymentsCond";
+import { User } from "./user";
 
 export type Apartment = {
     id: number;
-    name: string;
+    landlord: User;
+    description: string;
     address: string;
     propertyCond: string;
     entryDate: Date;

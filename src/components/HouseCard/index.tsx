@@ -34,7 +34,7 @@ const HouseCard = ({ houseData }: { houseData: Apartment }) => {
           alt="Paella dish"
         />
       )}
-      <Avatar alt="Remy Sharp" src={UserImg} sx={AvatarStyles}/>
+      <Avatar alt="" src={UserImg} sx={AvatarStyles}/>
       
       <CardContent
         sx={CardContentStyles}
@@ -78,7 +78,7 @@ const HouseCard = ({ houseData }: { houseData: Apartment }) => {
           sx={{ color: "#757575" }}
           onClick={() => {}}
         >
-          {houseData.name}
+          {`${houseData.landlord.firstName} ${houseData.landlord.lastName}`}
         </Button>
         <IconButton aria-label="add to favorites" onClick={() => {}}>
           <FavoriteIcon color="error"/>

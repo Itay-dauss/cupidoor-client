@@ -6,12 +6,14 @@ export const Container = styled.div`
   margin: 15px;
 `;
 
-export const DetailsContainer = styled.div`
+export const Frame = styled.div`
   border: 1px solid lightgray;
   height: 100%;
   border-radius: 8px;
   margin: 5px 0;
 `;
+
+// Line 1
 
 export const ElementsLineOne = styled.div`
   display: flex;
@@ -59,4 +61,36 @@ export const RentContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: -webkit-fill-available;
+`;
+
+// Line 2
+
+export const ElementsLineTwo = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+`;
+
+export const SubFrame = styled.div`
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  margin: 15px;
+  padding: 10px 15px;
+  height: -webkit-fill-available;
+`;
+
+export const AvatarConatiner = styled.div`
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const PaymentProperty = styled.div`
+  display: flex;
+  flex-direction: revert;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  margin: 8px 0;
 `;
