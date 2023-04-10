@@ -12,7 +12,10 @@ export const LANDLORD_MOCK: User = {
     familiarity: `I am Avi, like pets, and having car parking.
         Looking for a second tenant to the great
         current one.`,
-    isLandlord: true
+    isLandlord: true,
+    email: "Avi@gmail.com",
+    password: "Password1",
+    dateOfBirth: new Date()
 }
 
 export const TANENT_MOCK: User = {
@@ -22,7 +25,10 @@ export const TANENT_MOCK: User = {
     familiarity: `I am Moshe, like pets, and having car parking.
         Looking for a second tenant to the great
         current one.`,
-    isLandlord: false
+    isLandlord: false,
+    email: "Moshe@gmail.com",
+    password: "Password1",
+    dateOfBirth: new Date()
 }
 
 export const HOUSES: Apartment[] = [
@@ -40,11 +46,14 @@ export const HOUSES: Apartment[] = [
 ]
 
 export const USER_INIT: User = {
-    id: 0, 
-    firstName: '', 
-    lastName: '', 
-    familiarity: '', 
-    isLandlord: false
+    id: 0,
+    firstName: '',
+    lastName: '',
+    familiarity: '',
+    isLandlord: false,
+    email: "",
+    password: "",
+    dateOfBirth: new Date()
 }
 
 export const HOUSE_INIT: Apartment = {
