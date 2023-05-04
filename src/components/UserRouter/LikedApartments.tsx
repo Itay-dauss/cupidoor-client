@@ -1,5 +1,10 @@
+import GenericHousesList from "../GenericHousesList";
+import { PersonalInfoContainer } from "./styles"
+
 const LikedApartments = () => {
-    return (<>Liked apartments</>);
+    return <PersonalInfoContainer>
+        <GenericHousesList apartments={[]}/>
+    </PersonalInfoContainer>;
 }
  
 export default LikedApartments;
